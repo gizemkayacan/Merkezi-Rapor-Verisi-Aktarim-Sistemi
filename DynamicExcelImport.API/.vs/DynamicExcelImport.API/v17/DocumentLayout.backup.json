@@ -1,0 +1,560 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.API\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\albaraka\\PROJE\\DynamicExcelImport.UI\\Pages\\ExcelImport.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.API\\DynamicExcelImport.API.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DynamicExcelImport.API.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\albaraka\\PROJE\\DynamicExcelImport.UI\\Pages\\FieldManagement.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\albaraka\\PROJE\\DynamicExcelImport.UI\\Pages\\ReportManagement.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.UI\\Pages\\ExcelImport.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.UI\\Pages\\ReportManagement.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.UI\\Pages\\FetchData.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.UI\\Pages\\_Host.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.UI\\Pages\\Counter.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.UI\\Shared\\MainLayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.UI\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.UI\\App.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.UI\\_Imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.UI\\Shared\\SurveyPrompt.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.UI\\Shared\\NavMenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.UI\\Services\\AuthService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.UI\\Pages\\Index.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.UI\\Pages\\FieldManagement.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.UI\\Pages\\Error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.UI\\Data\\WeatherForecastService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.UI\\Models\\ImportModels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.UI\\Data\\WeatherForecast.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.UI\\DynamicExcelImport.UI.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.API\\Services\\DynamicDataService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Services\\DynamicDataService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.API\\Controllers\\ImportReportController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Controllers\\ImportReportController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.API\\Services\\DatabaseService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Services\\DatabaseService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.API\\Services\\ExcelProcessingService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Services\\ExcelProcessingService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.API\\Services\\ReportManagementService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Services\\ReportManagementService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.API\\Controllers\\ImportGroupController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Controllers\\ImportGroupController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.API\\Controllers\\ImportUpperGroupController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Controllers\\ImportUpperGroupController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.API\\Services\\IReportManagementService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Services\\IReportManagementService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.API\\Services\\IExcelProcessingService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Services\\IExcelProcessingService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.API\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.API\\Services\\IDynamicDataService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Services\\IDynamicDataService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.API\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ReportManagement.razor",
+              "DocumentMoniker": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\albaraka\\PROJE\\DynamicExcelImport.UI\\Pages\\ReportManagement.razor",
+              "RelativeDocumentMoniker": "..\\..\\albaraka\\PROJE\\DynamicExcelImport.UI\\Pages\\ReportManagement.razor",
+              "ToolTip": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\albaraka\\PROJE\\DynamicExcelImport.UI\\Pages\\ReportManagement.razor",
+              "RelativeToolTip": "..\\..\\albaraka\\PROJE\\DynamicExcelImport.UI\\Pages\\ReportManagement.razor",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-08-03T09:17:21.099Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "FieldManagement.razor",
+              "DocumentMoniker": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\albaraka\\PROJE\\DynamicExcelImport.UI\\Pages\\FieldManagement.razor",
+              "RelativeDocumentMoniker": "..\\..\\albaraka\\PROJE\\DynamicExcelImport.UI\\Pages\\FieldManagement.razor",
+              "ToolTip": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\albaraka\\PROJE\\DynamicExcelImport.UI\\Pages\\FieldManagement.razor",
+              "RelativeToolTip": "..\\..\\albaraka\\PROJE\\DynamicExcelImport.UI\\Pages\\FieldManagement.razor",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-08-03T09:17:11.955Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ExcelImport.razor",
+              "DocumentMoniker": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\albaraka\\PROJE\\DynamicExcelImport.UI\\Pages\\ExcelImport.razor",
+              "RelativeDocumentMoniker": "..\\..\\albaraka\\PROJE\\DynamicExcelImport.UI\\Pages\\ExcelImport.razor",
+              "ToolTip": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\albaraka\\PROJE\\DynamicExcelImport.UI\\Pages\\ExcelImport.razor",
+              "RelativeToolTip": "..\\..\\albaraka\\PROJE\\DynamicExcelImport.UI\\Pages\\ExcelImport.razor",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-08-03T09:16:23.38Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DynamicExcelImport.API.csproj",
+              "DocumentMoniker": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.API\\DynamicExcelImport.API.csproj",
+              "RelativeDocumentMoniker": "DynamicExcelImport.API.csproj",
+              "ToolTip": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.API\\DynamicExcelImport.API.csproj",
+              "RelativeToolTip": "DynamicExcelImport.API.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-07-13T08:27:56.182Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "DynamicDataService.cs",
+              "DocumentMoniker": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.API\\Services\\DynamicDataService.cs",
+              "RelativeDocumentMoniker": "Services\\DynamicDataService.cs",
+              "ToolTip": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.API\\Services\\DynamicDataService.cs",
+              "RelativeToolTip": "Services\\DynamicDataService.cs",
+              "ViewState": "AgIAAIEAAAAAAAAAAAAAALIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-23T07:54:14.05Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "ImportReportController.cs",
+              "DocumentMoniker": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.API\\Controllers\\ImportReportController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ImportReportController.cs",
+              "ToolTip": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.API\\Controllers\\ImportReportController.cs",
+              "RelativeToolTip": "Controllers\\ImportReportController.cs",
+              "ViewState": "AgIAAIAAAAAAAAAAAAAAAFUAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-06T11:21:59.798Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "DatabaseService.cs",
+              "DocumentMoniker": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.API\\Services\\DatabaseService.cs",
+              "RelativeDocumentMoniker": "Services\\DatabaseService.cs",
+              "ToolTip": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.API\\Services\\DatabaseService.cs",
+              "RelativeToolTip": "Services\\DatabaseService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-03T06:53:25.6Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "ExcelProcessingService.cs",
+              "DocumentMoniker": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.API\\Services\\ExcelProcessingService.cs",
+              "RelativeDocumentMoniker": "Services\\ExcelProcessingService.cs",
+              "ToolTip": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.API\\Services\\ExcelProcessingService.cs",
+              "RelativeToolTip": "Services\\ExcelProcessingService.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAIgAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-23T07:20:39.669Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "ReportManagementService.cs",
+              "DocumentMoniker": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.API\\Services\\ReportManagementService.cs",
+              "RelativeDocumentMoniker": "Services\\ReportManagementService.cs",
+              "ToolTip": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.API\\Services\\ReportManagementService.cs",
+              "RelativeToolTip": "Services\\ReportManagementService.cs",
+              "ViewState": "AgIAAM4AAAAAAAAAAAAswOgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-23T13:28:58.499Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "ImportGroupController.cs",
+              "DocumentMoniker": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.API\\Controllers\\ImportGroupController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ImportGroupController.cs",
+              "ToolTip": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.API\\Controllers\\ImportGroupController.cs",
+              "RelativeToolTip": "Controllers\\ImportGroupController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAI8AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-06T06:41:07.746Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ReportManagement.razor",
+              "DocumentMoniker": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.UI\\Pages\\ReportManagement.razor",
+              "RelativeDocumentMoniker": "..\\DynamicExcelImport.UI\\Pages\\ReportManagement.razor",
+              "ToolTip": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.UI\\Pages\\ReportManagement.razor",
+              "RelativeToolTip": "..\\DynamicExcelImport.UI\\Pages\\ReportManagement.razor",
+              "ViewState": "AgIAAPEAAAAAAAAAAAAgwBMBAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-13T12:02:47.947Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ExcelImport.razor",
+              "DocumentMoniker": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.UI\\Pages\\ExcelImport.razor",
+              "RelativeDocumentMoniker": "..\\DynamicExcelImport.UI\\Pages\\ExcelImport.razor",
+              "ToolTip": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.UI\\Pages\\ExcelImport.razor",
+              "RelativeToolTip": "..\\DynamicExcelImport.UI\\Pages\\ExcelImport.razor",
+              "ViewState": "AgIAAL0AAAAAAAAAAADwvzQBAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-13T08:22:09.703Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "ImportUpperGroupController.cs",
+              "DocumentMoniker": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.API\\Controllers\\ImportUpperGroupController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ImportUpperGroupController.cs",
+              "ToolTip": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.API\\Controllers\\ImportUpperGroupController.cs",
+              "RelativeToolTip": "Controllers\\ImportUpperGroupController.cs",
+              "ViewState": "AgIAAF8AAAAAAAAAAAAAACsAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-03T09:03:45.684Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "IReportManagementService.cs",
+              "DocumentMoniker": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.API\\Services\\IReportManagementService.cs",
+              "RelativeDocumentMoniker": "Services\\IReportManagementService.cs",
+              "ToolTip": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.API\\Services\\IReportManagementService.cs",
+              "RelativeToolTip": "Services\\IReportManagementService.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA4AAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-23T13:28:36.089Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "IExcelProcessingService.cs",
+              "DocumentMoniker": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.API\\Services\\IExcelProcessingService.cs",
+              "RelativeDocumentMoniker": "Services\\IExcelProcessingService.cs",
+              "ToolTip": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.API\\Services\\IExcelProcessingService.cs",
+              "RelativeToolTip": "Services\\IExcelProcessingService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-23T07:00:14.404Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "FetchData.razor",
+              "DocumentMoniker": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.UI\\Pages\\FetchData.razor",
+              "RelativeDocumentMoniker": "..\\DynamicExcelImport.UI\\Pages\\FetchData.razor",
+              "ToolTip": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.UI\\Pages\\FetchData.razor",
+              "RelativeToolTip": "..\\DynamicExcelImport.UI\\Pages\\FetchData.razor",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAAC4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-16T13:55:51.86Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "_Host.cshtml",
+              "DocumentMoniker": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.UI\\Pages\\_Host.cshtml",
+              "RelativeDocumentMoniker": "..\\DynamicExcelImport.UI\\Pages\\_Host.cshtml",
+              "ToolTip": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.UI\\Pages\\_Host.cshtml",
+              "RelativeToolTip": "..\\DynamicExcelImport.UI\\Pages\\_Host.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-29T06:46:16.638Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Counter.razor",
+              "DocumentMoniker": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.UI\\Pages\\Counter.razor",
+              "RelativeDocumentMoniker": "..\\DynamicExcelImport.UI\\Pages\\Counter.razor",
+              "ToolTip": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.UI\\Pages\\Counter.razor",
+              "RelativeToolTip": "..\\DynamicExcelImport.UI\\Pages\\Counter.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-17T09:16:52.512Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "MainLayout.razor",
+              "DocumentMoniker": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.UI\\Shared\\MainLayout.razor",
+              "RelativeDocumentMoniker": "..\\DynamicExcelImport.UI\\Shared\\MainLayout.razor",
+              "ToolTip": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.UI\\Shared\\MainLayout.razor",
+              "RelativeToolTip": "..\\DynamicExcelImport.UI\\Shared\\MainLayout.razor",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAADMAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-21T07:56:14.933Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.UI\\Program.cs",
+              "RelativeDocumentMoniker": "..\\DynamicExcelImport.UI\\Program.cs",
+              "ToolTip": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.UI\\Program.cs",
+              "RelativeToolTip": "..\\DynamicExcelImport.UI\\Program.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAcwBsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-13T08:26:54.469Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "App.razor",
+              "DocumentMoniker": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.UI\\App.razor",
+              "RelativeDocumentMoniker": "..\\DynamicExcelImport.UI\\App.razor",
+              "ToolTip": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.UI\\App.razor",
+              "RelativeToolTip": "..\\DynamicExcelImport.UI\\App.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-29T06:48:48.918Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "_Imports.razor",
+              "DocumentMoniker": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.UI\\_Imports.razor",
+              "RelativeDocumentMoniker": "..\\DynamicExcelImport.UI\\_Imports.razor",
+              "ToolTip": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.UI\\_Imports.razor",
+              "RelativeToolTip": "..\\DynamicExcelImport.UI\\_Imports.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-16T13:08:04.083Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "SurveyPrompt.razor",
+              "DocumentMoniker": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.UI\\Shared\\SurveyPrompt.razor",
+              "RelativeDocumentMoniker": "..\\DynamicExcelImport.UI\\Shared\\SurveyPrompt.razor",
+              "ToolTip": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.UI\\Shared\\SurveyPrompt.razor",
+              "RelativeToolTip": "..\\DynamicExcelImport.UI\\Shared\\SurveyPrompt.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-29T06:48:29.909Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "NavMenu.razor",
+              "DocumentMoniker": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.UI\\Shared\\NavMenu.razor",
+              "RelativeDocumentMoniker": "..\\DynamicExcelImport.UI\\Shared\\NavMenu.razor",
+              "ToolTip": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.UI\\Shared\\NavMenu.razor",
+              "RelativeToolTip": "..\\DynamicExcelImport.UI\\Shared\\NavMenu.razor",
+              "ViewState": "AgIAABkAAAAAAAAAAAAcwDIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-13T09:00:45.091Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.UI\\Services\\AuthService.cs",
+              "RelativeDocumentMoniker": "..\\DynamicExcelImport.UI\\Services\\AuthService.cs",
+              "ToolTip": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.UI\\Services\\AuthService.cs",
+              "RelativeToolTip": "..\\DynamicExcelImport.UI\\Services\\AuthService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-21T14:00:23.133Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Index.razor",
+              "DocumentMoniker": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.UI\\Pages\\Index.razor",
+              "RelativeDocumentMoniker": "..\\DynamicExcelImport.UI\\Pages\\Index.razor",
+              "ToolTip": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.UI\\Pages\\Index.razor",
+              "RelativeToolTip": "..\\DynamicExcelImport.UI\\Pages\\Index.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-21T08:00:57.914Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "FieldManagement.razor",
+              "DocumentMoniker": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.UI\\Pages\\FieldManagement.razor",
+              "RelativeDocumentMoniker": "..\\DynamicExcelImport.UI\\Pages\\FieldManagement.razor",
+              "ToolTip": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.UI\\Pages\\FieldManagement.razor",
+              "RelativeToolTip": "..\\DynamicExcelImport.UI\\Pages\\FieldManagement.razor",
+              "ViewState": "AgIAAKQAAAAAAAAAAAAcwL0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-17T12:17:25.031Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Error.cshtml",
+              "DocumentMoniker": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.UI\\Pages\\Error.cshtml",
+              "RelativeDocumentMoniker": "..\\DynamicExcelImport.UI\\Pages\\Error.cshtml",
+              "ToolTip": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.UI\\Pages\\Error.cshtml",
+              "RelativeToolTip": "..\\DynamicExcelImport.UI\\Pages\\Error.cshtml",
+              "ViewState": "AgIAABEAAAAAAAAAAAAcwCoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-29T06:46:44.263Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "WeatherForecastService.cs",
+              "DocumentMoniker": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.UI\\Data\\WeatherForecastService.cs",
+              "RelativeDocumentMoniker": "..\\DynamicExcelImport.UI\\Data\\WeatherForecastService.cs",
+              "ToolTip": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.UI\\Data\\WeatherForecastService.cs",
+              "RelativeToolTip": "..\\DynamicExcelImport.UI\\Data\\WeatherForecastService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-29T06:46:05.391Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "ImportModels.cs",
+              "DocumentMoniker": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.UI\\Models\\ImportModels.cs",
+              "RelativeDocumentMoniker": "..\\DynamicExcelImport.UI\\Models\\ImportModels.cs",
+              "ToolTip": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.UI\\Models\\ImportModels.cs",
+              "RelativeToolTip": "..\\DynamicExcelImport.UI\\Models\\ImportModels.cs",
+              "ViewState": "AgIAADAAAAAAAAAAAAAAwD8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-16T14:04:50.129Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "WeatherForecast.cs",
+              "DocumentMoniker": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.UI\\Data\\WeatherForecast.cs",
+              "RelativeDocumentMoniker": "..\\DynamicExcelImport.UI\\Data\\WeatherForecast.cs",
+              "ToolTip": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.UI\\Data\\WeatherForecast.cs",
+              "RelativeToolTip": "..\\DynamicExcelImport.UI\\Data\\WeatherForecast.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-29T06:45:58.203Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.API\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.API\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAcwB4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-03T08:56:59.301Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "IDynamicDataService.cs",
+              "DocumentMoniker": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.API\\Services\\IDynamicDataService.cs",
+              "RelativeDocumentMoniker": "Services\\IDynamicDataService.cs",
+              "ToolTip": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.API\\Services\\IDynamicDataService.cs",
+              "RelativeToolTip": "Services\\IDynamicDataService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-23T07:53:23.337Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "DynamicExcelImport.UI.csproj",
+              "DocumentMoniker": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.UI\\DynamicExcelImport.UI.csproj",
+              "RelativeDocumentMoniker": "..\\DynamicExcelImport.UI\\DynamicExcelImport.UI.csproj",
+              "ToolTip": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.UI\\DynamicExcelImport.UI.csproj",
+              "RelativeToolTip": "..\\DynamicExcelImport.UI\\DynamicExcelImport.UI.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-07-13T08:04:40.063Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.API\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Users\\gzm\\OneDrive\\Masa\u00FCst\u00FC\\PROJE\\DynamicExcelImport.API\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-07-03T06:25:26.697Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

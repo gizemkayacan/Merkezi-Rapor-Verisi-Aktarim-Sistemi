@@ -1,0 +1,93 @@
+USE RaporSistemi;
+GO
+
+-- Ýliþkisel (Foreign Key) baðlantýlarý yüzünden silme iþlemi alt tablolardan ana tablolara doðru yapýlmalýdýr.
+DROP TABLE IF EXISTS dbo.ImportBatchError;
+DROP TABLE IF EXISTS dbo.ImportBatch;
+DROP TABLE IF EXISTS dbo.ImportReportField;
+DROP TABLE IF EXISTS dbo.ImportReport;
+DROP TABLE IF EXISTS dbo.ImportGroup;
+DROP TABLE IF EXISTS dbo.ImportUpperGroup;
+
+-- 1. ÜST GRUP TABLOSU
+CREATE TABLE dbo.ImportUpperGroup
+(
+    Id BIGINT IDENTITY(1,1) PRIMARY KEY NOT NULL,
+    Name NVARCHAR(250) NOT NULL,
+    Code NVARCHAR(300) NOT NULL,
+    IsActive BIT DEFAULT 1 NOT NULL,
+    CreatedAt DATETIME2(0) DEFAULT SYSDATETIME() NOT NULL,
+    UpdatedAt DATETIME2(0) NULL
+);
+
+-- 2. GRUP TABLOSU
+CREATE TABLE dbo.ImportGroup
+(
+    Id BIGINT IDENTITY(1,1) PRIMARY KEY NOT NULL,
+    UpperGroupId BIGINT NOT NULL FOREIGN KEY REFERENCES dbo.ImportUpperGroup(Id),
+    Name NVARCHAR(250) NOT NULL,
+    Code NVARCHAR(300) NOT NULL,
+    IsActive BIT DEFAULT 1 NOT NULL,
+    CreatedAt DATETIME2(0) DEFAULT SYSDATETIME() NOT NULL,
+    UpdatedAt DATETIME2(0) NULL
+);
+
+-- 3. RAPOR TABLOSU
+CREATE TABLE dbo.ImportReport
+(
+    Id BIGINT IDENTITY(1,1) PRIMARY KEY NOT NULL,
+    GroupId BIGINT NOT NULL FOREIGN KEY REFERENCES dbo.ImportGroup(Id),
+    Name NVARCHAR(250) NOT NULL,
+    Code NVARCHAR(300) NOT NULL,
+    PhysicalTableName NVARCHAR(250) NULL,
+    IsActive BIT DEFAULT 1 NOT NULL,
+    SchemaVersion INT DEFAULT 1 NOT NULL,
+    CreatedAt DATETIME2(0) DEFAULT SYSDATETIME() NOT NULL,
+    UpdatedAt DATETIME2(0) NULL
+);
+
+-- 4. RAPOR ALANLARI TABLOSU
+CREATE TABLE dbo.ImportReportField
+(
+    Id BIGINT IDENTITY(1,1) PRIMARY KEY NOT NULL,
+    ReportId BIGINT NOT NULL FOREIGN KEY REFERENCES dbo.ImportReport(Id),
+    DisplayName NVARCHAR(250) NOT NULL,
+    ExcelColumnName NVARCHAR(250) NOT NULL,
+    SqlColumnName NVARCHAR(250) NOT NULL,
+    DataType NVARCHAR(50) NOT NULL,
+    MaxLength INT NULL,
+    Precision INT NULL,
+    Scale INT NULL,
+    IsRequired BIT DEFAULT 0 NOT NULL,
+    SortOrder INT NOT NULL,
+    IsActive BIT DEFAULT 1 NOT NULL,
+    CreatedAt DATETIME2(0) DEFAULT SYSDATETIME() NOT NULL,
+    UpdatedAt DATETIME2(0) NULL
+);
+
+-- 5. IMPORT ÝÞLEMÝ (BATCH) ÖZET TABLOSU
+CREATE TABLE dbo.ImportBatch
+(
+    Id BIGINT IDENTITY(1,1) PRIMARY KEY NOT NULL,
+    ReportId BIGINT NOT NULL FOREIGN KEY REFERENCES dbo.ImportReport(Id),
+    FileName NVARCHAR(250) NOT NULL,
+    FileHash NVARCHAR(250) NULL,
+    Status NVARCHAR(50) NOT NULL,
+    TotalRows INT DEFAULT 0 NOT NULL,
+    ValidRows INT DEFAULT 0 NOT NULL,
+    ErrorRows INT DEFAULT 0 NOT NULL,
+    StartedAt DATETIME2(0) DEFAULT SYSDATETIME() NOT NULL,
+    FinishedAt DATETIME2(0) NULL
+);
+
+-- 6. IMPORT ÝÞLEMÝ (BATCH) HATA DETAY TABLOSU
+CREATE TABLE dbo.ImportBatchError
+(
+    Id BIGINT IDENTITY(1,1) PRIMARY KEY NOT NULL,
+    BatchId BIGINT NOT NULL FOREIGN KEY REFERENCES dbo.ImportBatch(Id),
+    RowNumber INT NOT NULL,
+    ExcelColumnName NVARCHAR(250) NULL,
+    FieldName NVARCHAR(250) NULL,
+    RawValue NVARCHAR(MAX) NULL,
+    ErrorMessage NVARCHAR(MAX) NOT NULL
+);

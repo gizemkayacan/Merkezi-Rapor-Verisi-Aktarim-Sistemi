@@ -1,0 +1,33 @@
+1ve 2. günler şirketteilerle tanışma yaptıkları işi öğrenmeye çalışmak gibi şeylerle geçti. memzüç kavramı öğrenildi. power bi informatica ssas dwh gibi kavramlar öğrenildi takım lideri isteği üzerine . 
+
+3. gün 01.07.2026: Excel Üzerinden SQL Server'a Dinamik Rapor Verisi Aktarımı sistemi projem verildi ve bunun hakkında araştırmalar yapıldı. yol haritası çıkarıldı.
+
+4.gün- 02.07.2026:  projeye başlandı. metadata tabloları oluşturuldu. gerekli sistemler kuruldu kütüphaneler indirildi. haftalık toplantı yapıldı. 
+
+5.gün - 03.07.2026: visual studiodan api dosyası oluşturuldu ve altyapı ayarları yapıldı, c# kodlar yazılmaya başlandı. ve ilk swagger testi yapıldı
+
+6.gün - 06.07.2026:  hatırlamıyorum
+
+7.gün - 07.07.2026: swagger'da excel dosya yükleyip sql'de görüntülendi. toplantı yapıldı.
+
+8.gün - 08.07.2026: yönetici ekranı oluşturulmaya başlandı.
+
+9.gün - 09.07.2026: hatırlamıyorum
+
+10.gün - 10.07.2026: backend'deki son  düzenlemeler yapıldı. 
+
+11.gün - 13.07.2026: backend tarafı kodlar gözden geçirildi. önyüzü hangi sistemden geliştirileceğine karar verildi. blazor dosyaları indirildi. ve  önyüz geliştirilmeye başlandı. 
+
+12.gün - 14.07.2026: dinamik kolon tasarımcısı oluşturuldu. toplantı yapıldı. proje kontrol ettirildi ve update iişleminin ekranda olmaması gerektiği kolonların ekrandan tanımlanmaması gerektiği öğrenildi.
+
+13.gün - 16.07.2026: hatalar düzeltildi. yükelnen excel dosyasının ekranda çıktısını gösteren ekran yapıldı. 
+
+14.gün - 17.07.2026: ekran görünümünde iyileştirmeler yapıldı. tekrar proje toplantısı yapıldı ve sso rol bazlı erişim getirilmesi kararı alındı.
+
+15.gün - 20.07.2026: sso rol bazlı errişim kodlandı. veri tabanı ve api güncellemeleri yapıldı.
+
+16.gün - 21.07.2026: filehash için fonksiyon eklendi. navbara sekme eklendi. sso için bir giriş okuması yapıldı. toplantı yapıldı.
+
+17.gün - 22.07.2026: proje kodlama süreçleri bitirildi, son düzeltmeler yapıldı. proje kontrol ettirildi, update'ler yapıldı.
+
+18.gün - 23.07.2026: 

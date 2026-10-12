@@ -1,0 +1,51 @@
+﻿@inject DynamicExcelImport.UI.Services.AuthService AuthService
+@implements IDisposable
+<div class="top-row ps-3 navbar navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="excel-import">Dynamic Excel Import</a>
+        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</div>
+
+<div class="@NavMenuCssClass nav-scrollable" @onclick="ToggleNavMenu">
+    <nav class="flex-column">
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="excel-import" Match="NavLinkMatch.All">
+                <span class="oi oi-spreadsheet" aria-hidden="true"></span> Excel Aktarım
+            </NavLink>
+        </div>
+        @if (AuthService.CurrentRoleCode == "9999")
+        {
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="report-management">
+                <span class="oi oi-wrench" aria-hidden="true"></span> Yönetici Paneli
+            </NavLink>
+        </div>
+}
+    </nav>
+</div>
+
+@code {
+    private bool collapseNavMenu = true;
+    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+    private void ToggleNavMenu() => collapseNavMenu = !collapseNavMenu;
+    // 1. Sayfa ilk açıldığında servisteki "OnRoleChanged" olayına abone oluyoruz
+    protected override void OnInitialized()
+    {
+        AuthService.OnRoleChanged += RefreshUI;
+    }
+
+    // 2. Rol değiştiğinde Blazor'a "Ekranı Anında Çiz" emri veriyoruz
+    private void RefreshUI()
+    {
+        InvokeAsync(StateHasChanged);
+    }
+
+    // 3. Kullanıcı sayfadan çıkarsa aboneliği iptal ediyoruz (Çok önemli bir C# kuralı)
+    public void Dispose()
+    {
+        AuthService.OnRoleChanged -= RefreshUI;
+    }
+}

@@ -1,0 +1,357 @@
+﻿@page "/excel-import"
+@using DynamicExcelImport.UI.Models
+@inject HttpClient Http
+@inject IJSRuntime JSRuntime
+@inject DynamicExcelImport.UI.Services.AuthService AuthService
+
+<h3>Dinamik Excel İçeri Aktarım Sistemi</h3>
+<hr />
+
+<!-- BİLDİRİM ALANLARI -->
+@if (!string.IsNullOrEmpty(successMessage))
+{
+    <div class="alert alert-success alert-dismissible fade show animate__animated animate__fadeIn" role="alert">
+        <i class="oi oi-check mr-2"></i> <strong>Başarılı!</strong> @successMessage
+    </div>
+}
+
+@if (!string.IsNullOrEmpty(errorMessage))
+{
+    <div class="alert alert-danger animate__animated animate__headShake">
+        <i class="oi oi-warning mr-2"></i> <strong>Hata Oluştu:</strong> @errorMessage
+        @if (errorBatchId.HasValue)
+        {
+            <span class="badge bg-dark ms-2">Batch ID: @errorBatchId</span>
+        }
+    </div>
+}
+
+<!-- FİLTRELEME ALANI -->
+<div class="row mb-4">
+    <div class="col-md-4">
+        <label class="form-label fw-bold">Üst Grup Seçin</label>
+        <select class="form-select" value="@selectedUpperGroupId" @onchange="OnUpperGroupChanged">
+            <option value="">-- Üst Grup Seçiniz --</option>
+            @foreach (var uGroup in upperGroups) { <option value="@uGroup.Id">@uGroup.Name</option> }
+        </select>
+    </div>
+
+    <div class="col-md-4">
+        <label class="form-label fw-bold">Alt Grup Seçin</label>
+        <select class="form-select" value="@selectedGroupId" @onchange="OnGroupChanged" disabled="@(string.IsNullOrEmpty(selectedUpperGroupId))">
+            <option value="">-- Alt Grup Seçiniz --</option>
+            @foreach (var group in filteredGroups) { <option value="@group.Id">@group.Name</option> }
+        </select>
+    </div>
+
+    <div class="col-md-4">
+        <label class="form-label fw-bold">Rapor Türü Seçin</label>
+        <select class="form-select" value="@selectedReportId" @onchange="OnReportChanged" disabled="@(string.IsNullOrEmpty(selectedGroupId))">
+            <option value="">-- Rapor Türü Seçiniz --</option>
+            @foreach (var report in filteredReports) { <option value="@report.Id">@report.Name</option> }
+        </select>
+    </div>
+</div>
+
+<!-- İŞLEM PANELİ -->
+@if (!string.IsNullOrEmpty(selectedReportId))
+{
+    <div class="card p-4 bg-light mb-4 shadow-sm">
+        <h5 class="card-title fw-bold text-primary mb-3">Rapor İşlemleri</h5>
+
+        <div class="row align-items-end">
+            <!-- 1. Şablon İndir -->
+            <div class="col-md-3 mb-3">
+                <button class="btn btn-outline-success w-100 fw-bold py-2" @onclick="DownloadTemplate" disabled="@isProcessing">
+                    <span class="oi oi-cloud-download"></span> Şablonu İndir
+                </button>
+            </div>
+
+            <!-- 2. Dosya Seçimi -->
+            <div class="col-md-6 mb-3">
+                <label class="form-label fw-bold small">Excel Dosyası Yükleyin</label>
+                <InputFile class="form-control" OnChange="HandleFileSelected" accept=".xlsx" disabled="@isProcessing" />
+            </div>
+
+            <!-- 3. Yükle Butonu -->
+            <div class="col-md-3 mb-3">
+                <button class="btn btn-primary w-100 fw-bold py-2" @onclick="UploadExcelFile" disabled="@(selectedFile == null || isProcessing)">
+                    @if (isProcessing) { 
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> <span class="ms-1">Aktarılıyor...</span>
+                    }
+                    else { 
+                        <span><i class="oi oi-cloud-upload"></i> Veriyi Aktar</span> 
+                    }
+                </button>
+            </div>
+        </div>
+
+        @if (selectedFile != null && !isProcessing)
+        {
+            <div class="text-muted small fw-bold mt-1">
+                <i class="oi oi-file"></i> Seçilen Dosya: @selectedFile.Name (@(selectedFile.Size / 1024) KB)
+            </div>
+        }
+    </div>
+}
+
+<!-- HATA LİSTESİ -->
+@if (validationErrors.Any())
+{
+    <div class="card border-danger mb-4 shadow-sm animate__animated animate__fadeInUp">
+        <div class="card-header bg-danger text-white fw-bold"><i class="oi oi-list-rich mr-2"></i> Veri Hataları Listesi</div>
+        <div class="card-body bg-white">
+            <p class="text-danger small">Aşağıdaki hatalar giderilmeden aktarım yapılamaz. Sistem işlem yapmayı durdurdu.</p>
+            <ul class="list-group list-group-flush" style="max-height: 300px; overflow-y: auto;">
+                @foreach (var err in validationErrors)
+                {
+                    <li class="list-group-item list-group-item-warning small py-2"><i class="oi oi-arrow-circle-right text-danger mr-2"></i> @err</li>
+                }
+            </ul>
+        </div>
+    </div>
+}
+
+<!-- VERİ TABLOSU -->
+@if (dataList.Any())
+{
+    <div class="card mt-4 shadow-sm border-0 animate__animated animate__fadeIn">
+        <div class="card-header bg-white border-bottom py-3 d-flex justify-content-between align-items-center">
+            <h5 class="mb-0 text-secondary fw-bold"><i class="oi oi-spreadsheet text-success"></i> Aktarılan Veri Önizlemesi</h5>
+            <span class="badge bg-light text-success border">Toplam: @totalRecords satır / Sayfa: @currentPage</span>
+        </div>
+        <div class="card-body p-0">
+            <div class="table-responsive" style="max-height: 500px; overflow-y: auto;">
+                <table class="table table-hover table-striped table-sm mb-0">
+                    <thead class="table-dark" style="position: sticky; top: 0; z-index: 1;">
+                        <tr>
+                            <th style="width: 50px;">#</th>
+                            @foreach (var key in dataList.First().Keys.Where(k => !_hiddenColumns.Contains(k)))
+                            {
+                                <th>@key</th>
+                            }
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{ int rowIndex = (currentPage - 1) * pageSize + 1; }
+                        @foreach (var row in dataList)
+                        {
+                            <tr>
+                                <td class="fw-bold text-muted">@rowIndex</td>
+                                @foreach (var key in dataList.First().Keys.Where(k => !_hiddenColumns.Contains(k)))
+                                {
+                                    <td>@(row[key]?.ToString() ?? "-")</td>
+                                }
+                            </tr>
+                            rowIndex++;
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Sayfalama (Paging) Çubuğu -->
+            <div class="bg-light p-2 border-top d-flex justify-content-between align-items-center text-muted small">
+                <span>Sayfa @currentPage / @totalPages</span>
+                <div>
+                    <button class="btn btn-sm btn-outline-secondary" @onclick="PrevPage" disabled="@(currentPage == 1)">Önceki</button>
+                    <button class="btn btn-sm btn-outline-secondary ms-1" @onclick="NextPage" disabled="@(currentPage >= totalPages)">Sonraki</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    #region Değişkenler ve Tanımlamalar
+
+    private List<UpperGroupDto> upperGroups = new();
+    private List<GroupDto> allGroups = new();
+    private List<GroupDto> filteredGroups = new();
+    private List<ReportDto> allReports = new();
+    private List<ReportDto> filteredReports = new();
+
+    private string selectedUpperGroupId = "";
+    private string selectedGroupId = "";
+    private string selectedReportId = "";
+
+    private IBrowserFile? selectedFile;
+    private bool isProcessing = false;
+    private string successMessage = "";
+    private string errorMessage = "";
+    private List<string> validationErrors = new();
+    private long? errorBatchId;
+
+    // Tablo ve Sayfalama
+    private List<Dictionary<string, object>> dataList = new();
+    private readonly string[] _hiddenColumns = { "Id", "ImportBatchId", "RowNumber", "CreatedAt", "UpdatedAt" };
+    private int totalRecords = 0;
+    private int currentPage = 1;
+    private int pageSize = 50;
+    private int totalPages => totalRecords > 0 ? (int)Math.Ceiling((double)totalRecords / pageSize) : 1;
+    
+    private readonly System.Text.Json.JsonSerializerOptions jsonOptions = new() { PropertyNameCaseInsensitive = true };
+
+    #endregion
+
+    #region Başlangıç ve Olay (Event) Yönetimi
+
+    protected override async Task OnInitializedAsync()
+    {
+        upperGroups = await Http.GetFromJsonAsync<List<UpperGroupDto>>("api/ImportUpperGroup", jsonOptions) ?? new();
+        allGroups = await Http.GetFromJsonAsync<List<GroupDto>>("api/ImportGroup", jsonOptions) ?? new();
+        
+        await LoadReportsByRole();
+        AuthService.OnRoleChanged += OnUserRoleChanged;
+    }
+
+    private async void OnUserRoleChanged()
+    {
+        await LoadReportsByRole();
+        selectedUpperGroupId = ""; selectedGroupId = ""; selectedReportId = "";
+        ClearMessagesAndData();
+        StateHasChanged();
+    }
+
+    public void Dispose() => AuthService.OnRoleChanged -= OnUserRoleChanged;
+
+    private async Task LoadReportsByRole()
+    {
+        allReports = await Http.GetFromJsonAsync<List<ReportDto>>($"api/ImportReport?roleCode={AuthService.CurrentRoleCode}", jsonOptions) ?? new();
+    }
+
+    #endregion
+
+    #region Dropdown Tetikleyicileri
+
+    private void OnUpperGroupChanged(ChangeEventArgs e)
+    {
+        selectedUpperGroupId = e.Value?.ToString() ?? "";
+        selectedGroupId = ""; selectedReportId = "";
+        ClearMessagesAndData();
+        filteredGroups = string.IsNullOrEmpty(selectedUpperGroupId) ? new() : allGroups.Where(g => g.UpperGroupId == Convert.ToInt64(selectedUpperGroupId)).ToList();
+        filteredReports.Clear();
+    }
+
+    private void OnGroupChanged(ChangeEventArgs e)
+    {
+        selectedGroupId = e.Value?.ToString() ?? "";
+        selectedReportId = "";
+        ClearMessagesAndData();
+        filteredReports = string.IsNullOrEmpty(selectedGroupId) ? new() : allReports.Where(r => r.GroupId == Convert.ToInt64(selectedGroupId)).ToList();
+    }
+
+    private void OnReportChanged(ChangeEventArgs e)
+    {
+        selectedReportId = e.Value?.ToString() ?? "";
+        ClearMessagesAndData();
+    }
+
+    private void ClearMessagesAndData()
+    {
+       successMessage = ""; 
+        errorMessage = ""; 
+        validationErrors.Clear(); 
+        errorBatchId = null;
+        dataList.Clear(); 
+        totalRecords = 0; 
+        currentPage = 1;
+    }
+
+    #endregion
+
+    #region İşlem Metotları (İndirme ve Yükleme)
+
+    private async Task DownloadTemplate()
+    {
+        try
+        {
+            successMessage = ""; errorMessage = "";
+            await JSRuntime.InvokeVoidAsync("open", $"{Http.BaseAddress}api/ImportReport/{selectedReportId}/template", "_blank");
+        }
+        catch (Exception ex) { errorMessage = $"Şablon indirilemedi: {ex.Message}"; }
+    }
+
+    private void HandleFileSelected(InputFileChangeEventArgs e)
+    {
+        selectedFile = e.File;
+        successMessage = ""; errorMessage = ""; validationErrors.Clear(); errorBatchId = null;
+    }
+
+    private async Task UploadExcelFile()
+    {
+        if (selectedFile == null) return;
+        isProcessing = true; ClearMessagesAndData();
+
+        try
+        {
+            using var content = new MultipartFormDataContent();
+            using var fileStream = selectedFile.OpenReadStream(maxAllowedSize: 15 * 1024 * 1024);
+            content.Add(new StreamContent(fileStream), "file", selectedFile.Name);
+            var response = await Http.PostAsync($"api/ImportReport/{selectedReportId}/imports", content);
+            var responseString = await response.Content.ReadAsStringAsync();
+            if (response.IsSuccessStatusCode)
+            {
+                successMessage = "Dosya başarıyla yüklendi ve eski veriler güncellendi.";
+                selectedFile = null;
+                currentPage = 1;
+                await LoadData();
+            }
+            else if (response.StatusCode == System.Net.HttpStatusCode.BadRequest)
+            {
+                try
+                {
+                    var errorResult = System.Text.Json.JsonSerializer.Deserialize<ApiErrorResponse>(responseString, jsonOptions);
+                    errorMessage = errorResult?.Message ?? "Dosya içeriğinde hatalar bulundu.";
+                    validationErrors = errorResult?.Errors ?? new();
+                    errorBatchId = errorResult?.BatchId;
+                }
+                catch
+                {
+                    errorMessage = responseString;
+                }
+            }
+            else
+            {
+                errorMessage = $"Sunucu Hatası ({response.StatusCode}): {responseString}";
+            }
+        }
+        catch (Exception ex) { errorMessage = $"Dosya aktarım hatası: {ex.Message}"; }
+        finally { isProcessing = false; }
+    }
+
+    #endregion
+
+    #region Sayfalama (Paging) Yönetimi
+
+    private async Task NextPage() { currentPage++; await LoadData(); }
+    private async Task PrevPage() { currentPage--; await LoadData(); }
+
+    private async Task LoadData()
+    {
+        if (string.IsNullOrEmpty(selectedReportId)) return;
+        var response = await Http.GetFromJsonAsync<PagedDataResponse>($"api/ImportReport/Data/{selectedReportId}?pageNumber={currentPage}&pageSize={pageSize}", jsonOptions);
+        if (response != null)
+        {
+            dataList = response.Data;
+            totalRecords = response.TotalRecords;
+        }
+    }
+    #endregion
+
+    #region DTO Sınıfları
+
+    public class PagedDataResponse
+    {
+        public int TotalRecords { get; set; }
+        public List<Dictionary<string, object>> Data { get; set; }
+    }
+
+    public class ApiErrorResponse
+    {
+        public string Message { get; set; }
+        public List<string> Errors { get; set; }
+        public long? BatchId { get; set; }
+    }
+
+    #endregion
+}

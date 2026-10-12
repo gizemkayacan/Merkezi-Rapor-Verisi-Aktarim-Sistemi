@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.37411.7
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicExcelImport.API", "DynamicExcelImport.API.csproj", "{21971B91-63A3-4CF7-9708-D5C41FF4CBBE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicExcelImport.UI", "..\DynamicExcelImport.UI\DynamicExcelImport.UI.csproj", "{9D88613F-C029-4921-ADC9-EA6E987AD1A8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{21971B91-63A3-4CF7-9708-D5C41FF4CBBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21971B91-63A3-4CF7-9708-D5C41FF4CBBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21971B91-63A3-4CF7-9708-D5C41FF4CBBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21971B91-63A3-4CF7-9708-D5C41FF4CBBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D88613F-C029-4921-ADC9-EA6E987AD1A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D88613F-C029-4921-ADC9-EA6E987AD1A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D88613F-C029-4921-ADC9-EA6E987AD1A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D88613F-C029-4921-ADC9-EA6E987AD1A8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {67C5F681-3105-4722-97FB-1C6770933F92}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,6 @@
+@DynamicExcelImport.API_HostAddress = http://localhost:5223
+
+GET {{DynamicExcelImport.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

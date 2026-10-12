@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "Yeni Profil",
+    "Projects": [
+      {
+        "Path": "DynamicExcelImport.API.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "..\\DynamicExcelImport.UI\\DynamicExcelImport.UI.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

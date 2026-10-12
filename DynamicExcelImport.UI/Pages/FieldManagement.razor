@@ -1,0 +1,190 @@
+﻿@page "/field-management/{ReportId:long}"
+@inject HttpClient Http
+@using DynamicExcelImport.UI.Models
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h4 class="text-secondary fw-bold mb-0">Rapor Alan (Kolon) Eşleştirme</h4>
+    <a href="/report-management" class="btn btn-outline-secondary btn-sm">Raporlara Dön</a>
+</div>
+<hr />
+
+@if (!string.IsNullOrEmpty(message))
+{
+    <div class="alert alert-info shadow-sm">@message</div>
+}
+
+<div class="row">
+    <!-- SOL TARAF: YENİ ALAN EKLEME FORMU -->
+    <div class="col-md-4 mb-4">
+        <div class="card shadow-sm border-0">
+            <div class="card-header bg-dark text-white fw-bold">
+                <i class="oi oi-plus"></i> Yeni Kolon Tanımla
+            </div>
+            <div class="card-body bg-light">
+                <div class="mb-3">
+                    <label class="form-label fw-bold small">Görünen Ad (Ekranda)</label>
+                    <input type="text" class="form-control form-control-sm" @bind="newField.DisplayName" placeholder="Örn: Müşteri Numarası" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-bold small text-success">Excel'deki Başlık Adı</label>
+                    <input type="text" class="form-control form-control-sm" @bind="newField.ExcelColumnName" placeholder="Örn: Musteri_No" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-bold small text-primary">SQL Kolon Adı</label>
+                    <input type="text" class="form-control form-control-sm" @bind="newField.SqlColumnName" placeholder="Örn: CustomerId" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-bold small">Veri Tipi</label>
+                    <select class="form-select form-select-sm" @bind="newField.DataType">
+                        <option value="">-- Seçiniz --</option>
+                        <option value="Metin">Metin (Yazı)</option>
+                        <option value="Tam Sayı">Tam Sayı</option>
+                        <option value="Ondalık">Ondalık Sayı</option>
+                        <option value="Tarih">Tarih</option>
+                    </select>
+                </div>
+                <div class="mb-3 row">
+                    <div class="col-6">
+                        <label class="form-label fw-bold small">Uzunluk (Max)</label>
+                        <input type="number" class="form-control form-control-sm" @bind="newField.MaxLength" placeholder="Örn: 250" />
+                    </div>
+                    <div class="col-6">
+                        <label class="form-label fw-bold small">Sıra No</label>
+                        <input type="number" class="form-control form-control-sm" @bind="newField.SortOrder" />
+                    </div>
+                </div>
+                <div class="form-check form-switch mb-3">
+                    <input class="form-check-input" type="checkbox" id="isRequired" @bind="newField.IsRequired">
+                    <label class="form-check-label fw-bold small" for="isRequired">Bu alan zorunlu mu?</label>
+                </div>
+                <button class="btn btn-primary w-100 fw-bold" @onclick="AddField" disabled="@(string.IsNullOrWhiteSpace(newField.ExcelColumnName) || string.IsNullOrWhiteSpace(newField.SqlColumnName))">
+                    Alanı Listeye Ekle
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SAĞ TARAF: EKLENMİŞ ALANLARIN LİSTESİ -->
+    <div class="col-md-8">
+        <div class="card shadow-sm border-0">
+            <div class="card-header bg-secondary text-white fw-bold">
+                <i class="oi oi-list"></i> Bu Rapora Ait Mevcut Alanlar
+            </div>
+            <div class="card-body p-0">
+                <table class="table table-hover table-striped mb-0 text-sm">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Sıra</th>
+                            <th>Excel Başlığı</th>
+                            <th>SQL Kolonu</th>
+                            <th>Veri Tipi</th>
+                            <th>Zorunlu</th>
+                            <th>İşlem</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (existingFields != null && existingFields.Any())
+                        {
+                            @foreach (var field in existingFields.OrderBy(f => f.OrderNo))
+                            {
+                                <tr>
+                                    <td class="align-middle fw-bold">@field.OrderNo</td>
+                                    <td class="align-middle text-success fw-bold">@field.ExcelColumnName</td>
+                                    <td class="align-middle text-primary">@field.Code</td>
+                                    <td class="align-middle">@field.DataType @(field.MaxLength.HasValue ? $"({field.MaxLength})" : "")</td>
+                                    <td class="align-middle">
+                                        @if (field.IsRequired)
+                                        {
+                                            <span class="badge bg-danger">Evet</span>
+                                        }
+                                        else
+                                        {
+
+                                            <span class="badge bg-secondary">Hayır</span>
+                                        }
+                                    </td>
+                                    <td class="align-middle">
+                                        <button class="btn btn-sm btn-outline-danger" @onclick="() => DeleteField(field.Id)">Sil</button>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr><td colspan="6" class="text-center text-muted p-4">Bu rapora henüz kolon tanımlanmamış.</td></tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public long ReportId { get; set; }
+
+    private CreateFieldRequest newField = new() { SortOrder = 1 };
+    private List<FieldDto> existingFields = new();
+    private string message = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadFields();
+    }
+
+    private async Task LoadFields()
+    {
+        try
+        {
+            // O rapora ait mevcut alanları API'den çeker
+            existingFields = await Http.GetFromJsonAsync<List<FieldDto>>($"api/ImportReport/Fields/{ReportId}") ?? new();
+        }
+        catch (Exception ex)
+        {
+            message = "Mevcut alanlar yüklenirken hata oluştu.";
+        }
+    }
+
+    private async Task AddField()
+    {
+        try
+        {
+            // API'ye yeni alanı göndeririz (Liste olarak yolluyoruz çünkü API liste bekleyecek)
+            var requestList = new List<CreateFieldRequest> { newField };
+            var response = await Http.PostAsJsonAsync($"api/ImportReport/{ReportId}/fields", requestList);
+
+            if (response.IsSuccessStatusCode)
+            {
+                message = "Alan başarıyla eklendi.";
+                newField = new() { SortOrder = existingFields.Count + 2 }; // Formu temizle ve sırayı artır
+                await LoadFields(); // Tabloyu yenile
+            }
+            else
+            {
+                message = "Alan eklenirken sunucu hatası oluştu.";
+            }
+        }
+        catch (Exception ex)
+        {
+            message = $"Hata: {ex.Message}";
+        }
+    }
+
+    private async Task DeleteField(long fieldId)
+    {
+        try
+        {
+            var response = await Http.DeleteAsync($"api/ImportReport/Fields/{fieldId}");
+            if (response.IsSuccessStatusCode)
+            {
+                message = "Alan listeden silindi.";
+                await LoadFields();
+            }
+        }
+        catch (Exception ex)
+        {
+            message = "Silme işlemi başarısız.";
+        }
+    }
+}

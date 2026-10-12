@@ -1,0 +1,437 @@
+﻿@page "/report-management"
+@inject DynamicExcelImport.UI.Services.AuthService AuthService
+@inject HttpClient Http
+@inject IJSRuntime JS
+@using DynamicExcelImport.UI.Models
+@if (AuthService.CurrentRoleCode == "9999")
+{
+
+
+
+<h4 class="text-secondary fw-bold mb-4">Rapor ve Şablon Yönetim Paneli</h4>
+<hr />
+
+@if (!string.IsNullOrEmpty(message))
+{
+	<div class="alert alert-dark shadow-sm animate__animated animate__fadeIn" role="alert">
+		<i class="oi oi-info mr-2"></i> @message
+	</div>
+}
+<!-- YENİ TANIMLAMA FORMLARI (ESKİ SABİT HALİ) -->
+<div class="row">
+	<div class="col-md-6 mb-4">
+		<div class="card shadow-sm border-0 h-100">
+			<div class="card-header bg-dark text-white fw-bold">
+				<i class="oi oi-folder"></i> Yeni Üst Grup Tanımlama
+			</div>
+			<div class="card-body bg-light">
+				<div class="mb-3">
+					<label class="form-label fw-bold">Üst Grup Adı</label>
+					<input type="text" class="form-control" @bind="newUpperGroup.Name" placeholder="Örn: Risk Yönetimi" />
+				</div>
+				<div class="mb-3">
+					<label class="form-label fw-bold">Üst Grup Kodu</label>
+					<input type="text" class="form-control" @bind="newUpperGroup.Code" placeholder="Örn: risk" />
+				</div>
+				<button class="btn btn-secondary w-100 fw-bold mt-auto" @onclick="CreateUpperGroup" 
+				disabled="@(string.IsNullOrWhiteSpace(newUpperGroup.Name) || string.IsNullOrWhiteSpace(newUpperGroup.Code))">
+				Üst Grup Oluştur
+				</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-md-6 mb-4">
+		<div class="card shadow-sm border-0 h-100">
+			<div class="card-header bg-dark text-white fw-bold">
+				<i class="oi oi-layers"></i> Yeni Alt Grup Tanımlama
+			</div>
+			<div class="card-body bg-light">
+				<div class="mb-3">
+					<label class="form-label fw-bold">Bağlı Olacağı Üst Grup</label>
+					<select class="form-select" @bind="newGroup.UpperGroupId">
+						<option value="0">-- Üst Grup Seçiniz --</option>
+						@if (upperGroups != null)
+						{
+							@foreach (var ug in upperGroups)
+							{
+								<option value="@ug.Id">@ug.Name</option>
+							}
+						}
+					</select>
+				</div>
+				<div class="mb-3">
+					<label class="form-label fw-bold">Alt Grup Adı</label>
+					<input type="text" class="form-control" @bind="newGroup.Name" placeholder="Örn: Memzuç Verileri" />
+				</div>
+				<div class="mb-3">
+					<label class="form-label fw-bold">Alt Grup Kodu</label>
+					<input type="text" class="form-control" @bind="newGroup.Code" placeholder="Örn: memzuc" />
+				</div>
+				<button class="btn btn-secondary w-100 fw-bold" @onclick="CreateGroup" disabled="@(newGroup.UpperGroupId == 0 || string.IsNullOrWhiteSpace(newGroup.Name) || string.IsNullOrWhiteSpace(newGroup.Code))">
+					Alt Grup Oluştur
+				</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-md-12 mb-4">
+		<div class="card shadow-sm border-0">
+			<div class="card-header bg-dark text-white fw-bold">
+				<i class="oi oi-spreadsheet"></i> Yeni Rapor Şablonu Tanımlama
+			</div>
+			<div class="card-body bg-light">
+				<div class="row">
+					<div class="col-md-3 mb-3">
+						<label class="form-label fw-bold">Bağlı Olacağı Alt Grup</label>
+						<select class="form-select" @bind="newReport.GroupId">
+							<option value="0">-- Alt Grup Seçiniz --</option>
+							@if (allGroups != null)
+							{
+								@foreach (var g in allGroups)
+								{
+									<option value="@g.Id">@g.Name</option>
+								}
+							}
+						</select>
+					</div>
+					<div class="col-md-3 mb-3">
+						<label class="form-label fw-bold">Rapor Adı</label>
+						<input type="text" class="form-control" @bind="newReport.Name" placeholder="Örn: Ticari Limitler" />
+					</div>
+					<div class="col-md-3 mb-3">
+						<label class="form-label fw-bold">Rapor Kodu</label>
+						<input type="text" class="form-control" @bind="newReport.Code" placeholder="Örn: ticari_limit" />
+					</div>
+					<div class="col-md-3 mb-3">
+						<label class="form-label fw-bold text-danger">SSO Rol Kodu</label>
+						<input type="text" class="form-control border-danger" @bind="newReport.RoleCode" placeholder="Örn: 1000" title="Bu raporu sadece bu role sahip kişiler görebilir." />
+					</div>
+				</div>
+				<button class="btn btn-primary w-100 fw-bold" @onclick="CreateReport" disabled="@(newReport.GroupId == 0 || string.IsNullOrWhiteSpace(newReport.Name) || string.IsNullOrWhiteSpace(newReport.Code) || string.IsNullOrWhiteSpace(newReport.RoleCode))">
+					Rapor Şablonu Oluştur
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- LİSTELER (YENİ AÇILIR-KAPANIR AKORDEON YAPISI) -->
+<div class="row mb-4">
+	<!-- 1. Üst Gruplar Listesi -->
+	<div class="col-md-6">
+		<div class="card shadow-sm border-0 mb-3">
+			<div class="card-header bg-secondary text-white fw-bold d-flex justify-content-between align-items-center"
+				 style="cursor: pointer;" @onclick="ToggleUpperGroupList">
+				<span><i class="oi oi-folder"></i> Kayıtlı Üst Gruplar</span>
+				<span class="oi @(showUpperGroupList ? "oi-chevron-top" : "oi-chevron-bottom")"></span>
+			</div>
+			@if (showUpperGroupList)
+			{
+				<div class="card-body p-0 animate__animated animate__fadeIn">
+					<table class="table table-hover mb-0">
+						<tbody>
+							@if (upperGroups != null)
+							{
+								@foreach (var ug in upperGroups)
+								{
+									<tr>
+										<td class="align-middle fw-bold">@ug.Name</td>
+										<td class="align-middle text-muted">@ug.Code</td>
+										<td class="text-end">
+											<button class="btn btn-sm btn-outline-danger" @onclick="() => DeleteUpperGroup(ug.Id, ug.Name)">Sil</button>
+										</td>
+									</tr>
+								}
+							}
+						</tbody>
+					</table>
+				</div>
+			}
+		</div>
+	</div>
+
+	<!-- 2. Alt Gruplar Listesi -->
+	<div class="col-md-6">
+		<div class="card shadow-sm border-0 mb-3">
+			<div class="card-header bg-secondary text-white fw-bold d-flex justify-content-between align-items-center"
+				 style="cursor: pointer;" @onclick="ToggleGroupList">
+				<span><i class="oi oi-layers"></i> Kayıtlı Alt Gruplar</span>
+				<span class="oi @(showGroupList ? "oi-chevron-top" : "oi-chevron-bottom")"></span>
+			</div>
+			@if (showGroupList)
+			{
+				<div class="card-body p-0 animate__animated animate__fadeIn">
+					<table class="table table-hover mb-0">
+						<tbody>
+							@if (allGroups != null)
+							{
+								@foreach (var g in allGroups)
+								{
+									<tr>
+										<td class="align-middle fw-bold">@g.Name</td>
+										<td class="align-middle text-muted">@g.Code</td>
+										<td class="text-end">
+											<button class="btn btn-sm btn-outline-danger" @onclick="() => DeleteGroup(g.Id, g.Name)">Sil</button>
+										</td>
+									</tr>
+								}
+							}
+						</tbody>
+					</table>
+				</div>
+			}
+		</div>
+	</div>
+</div>
+
+<!-- 3. Rapor Şablonları Listesi -->
+<div class="card shadow-sm border-0 mb-5">
+	<div class="card-header bg-secondary text-white fw-bold d-flex justify-content-between align-items-center"
+		 style="cursor: pointer;" @onclick="ToggleReportList">
+		<span><i class="oi oi-list"></i> Sistemde Tanımlı Rapor Şablonları</span>
+
+		<div class="d-flex align-items-center">
+			<!-- Arama kutusuna tıklanınca akordeon kapanmasın diye stopPropagation ekledik -->
+			<input type="text" class="form-control form-control-sm me-3" style="width: 250px;"
+				   placeholder="🔍 Rapor adı veya kodu ara..."
+				   @bind="reportSearchText" @bind:event="oninput" @onclick:stopPropagation="true" />
+			<span class="oi @(showReportList ? "oi-chevron-top" : "oi-chevron-bottom")"></span>
+		</div>
+	</div>
+
+	@if (showReportList)
+	{
+		<div class="card-body p-0 animate__animated animate__fadeIn">
+			<div class="table-responsive">
+				<table class="table table-hover table-striped mb-0">
+					<thead class="table-dark">
+						<tr>
+							<th style="width: 10%">ID</th>
+							<th style="width: 30%">Rapor Adı</th>
+							<th style="width: 20%">Rapor Kodu</th>
+							<th style="width: 30%">Fiziksel SQL Tablo Adı</th>
+							<th style="width: 10%" class="text-center">İşlem</th>
+						</tr>
+					</thead>
+					<tbody>
+						@if (allReports != null && allReports.Any())
+						{
+							// 1. Arama metnini güvenli hale getiriyoruz
+							var safeSearch = reportSearchText?.Trim() ?? "";
+
+							var filteredReports = allReports.Where(r =>
+							string.IsNullOrWhiteSpace(safeSearch) ||
+							(r.Name != null && r.Name.Contains(safeSearch, StringComparison.CurrentCultureIgnoreCase)) ||
+							(r.Code != null && r.Code.Contains(safeSearch, StringComparison.CurrentCultureIgnoreCase))
+							).ToList();
+
+							if (filteredReports.Any())
+							{
+								@foreach (var rpt in filteredReports)
+								{
+									<tr>
+										<td class="align-middle fw-bold">@rpt.Id</td>
+										<td class="align-middle">@rpt.Name</td>
+										<td class="align-middle text-muted">@rpt.Code</td>
+										<td class="align-middle text-primary code">@rpt.PhysicalTableName</td>
+										<td class="text-center text-nowrap">
+											<button class="btn btn-sm btn-danger fw-bold" @onclick="() => DeleteReport(rpt.Id, rpt.Name)">Sil</button>
+										</td>
+									</tr>
+								}
+							}
+							else
+							{
+								<tr><td colspan="5" class="text-center text-muted p-4">Arama kriterinize uygun rapor bulunamadı.</td></tr>
+							}
+						}
+						else
+						{
+							<tr><td colspan="5" class="text-center text-muted p-4">Sistemde henüz kayıtlı bir rapor şablonu bulunmamaktadır.</td></tr>
+						}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	}
+</div>
+}
+else
+{
+<div class="alert alert-danger mt-4">
+	<h4>Yetkisiz Erişim!</h4>
+	<p>Bu sayfayı görüntülemek için Sistem Yöneticisi (9999) yetkiniz olmalıdır.</p>
+</div>
+}
+
+@code {
+	private UpperGroupDto newUpperGroup = new();
+	private GroupDto newGroup = new();
+	private ReportDto newReport = new();
+
+	private List<UpperGroupDto> upperGroups = new();
+	private List<GroupDto> allGroups = new();
+	private List<ReportDto> allReports = new();
+	
+	private bool showUpperGroupList = false;
+	private bool showGroupList = false;
+	private bool showReportList = false;
+
+	private string reportSearchText = "";
+
+	// Listeleri açıp kapatan tetikleyiciler
+	private void ToggleUpperGroupList() => showUpperGroupList = !showUpperGroupList;
+	private void ToggleGroupList() => showGroupList = !showGroupList;
+	private void ToggleReportList() => showReportList = !showReportList;
+
+	private string message = "";
+	private System.Text.Json.JsonSerializerOptions jsonOptions = new() { PropertyNameCaseInsensitive = true };
+
+	protected override async Task OnInitializedAsync()
+	{
+		await LoadAllData();
+	}
+
+	private async Task LoadAllData()
+	{
+		try
+		{
+			upperGroups = await Http.GetFromJsonAsync<List<UpperGroupDto>>("api/ImportUpperGroup", jsonOptions) ?? new();
+			allGroups = await Http.GetFromJsonAsync<List<GroupDto>>("api/ImportGroup", jsonOptions) ?? new();
+			allReports = await Http.GetFromJsonAsync<List<ReportDto>>("api/ImportReport", jsonOptions) ?? new();
+			StateHasChanged();
+		}
+		catch (Exception ex) { message = $"Veriler yüklenirken hata oluştu: {ex.Message}"; }
+	}
+
+	private async Task CreateUpperGroup()
+	{
+		var response = await Http.PostAsJsonAsync("api/ImportUpperGroup", newUpperGroup);
+		if (response.IsSuccessStatusCode)
+		{
+			message = "Üst grup başarıyla tanımlandı.";
+			newUpperGroup = new();
+			await LoadAllData();
+		}
+		else
+		{
+			var errorDetail = await response.Content.ReadAsStringAsync();
+			message = $"Üst Grup Oluşturulamadı! Hata Kodu: {response.StatusCode} | Detay: {errorDetail}";
+			StateHasChanged();
+		}
+	}
+
+	private async Task CreateGroup()
+	{
+		var response = await Http.PostAsJsonAsync("api/ImportGroup", newGroup);
+		if (response.IsSuccessStatusCode)
+		{
+			message = "Alt grup başarıyla tanımlandı.";
+			newGroup = new();
+			await LoadAllData();
+		}
+		else
+		{
+			var errorDetail = await response.Content.ReadAsStringAsync();
+			message = $"Alt Grup Oluşturulamadı! Hata Kodu: {response.StatusCode} | Detay: {errorDetail}";
+			StateHasChanged();
+		}
+	}
+
+	private async Task CreateReport()
+	{
+		var response = await Http.PostAsJsonAsync("api/ImportReport", newReport);
+		if (response.IsSuccessStatusCode)
+		{
+			message = "Rapor şablonu ve fiziksel veritabanı tablosu başarıyla oluşturuldu.";
+			newReport = new();
+			await LoadAllData();
+		}
+	}
+
+	private async Task DeleteReport(long id, string reportName)
+	{
+		bool confirmed = await JS.InvokeAsync<bool>("confirm", $"'{reportName}' şablonunu ve bağlı fiziksel tablosunu silmek istediğinize emin misiniz?");
+
+		if (confirmed)
+		{
+			try
+			{
+				var response = await Http.DeleteAsync($"api/ImportReport/{id}");
+				if (response.IsSuccessStatusCode)
+				{
+					message = "Seçilen rapor şablonu sistemden kaldırıldı.";
+					await LoadAllData();
+				}
+				else
+				{
+					var errorDetail = await response.Content.ReadAsStringAsync();
+					message = $"İşlem Reddedildi! Hata Kodu: {response.StatusCode} | Detay: {errorDetail}";
+					StateHasChanged();
+				}
+			}
+			catch (Exception ex)
+			{
+				message = $"Silme isteği sırasında hata oluştu: {ex.Message}";
+				StateHasChanged();
+			}
+		}
+	}
+	private async Task DeleteUpperGroup(long id, string name)
+	{
+		bool confirmed = await JS.InvokeAsync<bool>("confirm", $"'{name}' adlı Üst Grubu silmek istediğinize emin misiniz?");
+		if (confirmed)
+		{
+			try
+			{
+				var response = await Http.DeleteAsync($"api/ImportUpperGroup/{id}");
+				if (response.IsSuccessStatusCode)
+				{
+					message = "Seçilen üst grup başarıyla sistemden kaldırıldı.";
+					await LoadAllData();
+				}
+				else
+				{
+					var errorDetail = await response.Content.ReadAsStringAsync();
+					message = $"İşlem Reddedildi! Detay: {errorDetail}";
+					StateHasChanged();
+				}
+			}
+			catch (Exception ex)
+			{
+				message = $"Hata oluştu: {ex.Message}";
+				StateHasChanged();
+			}
+		}
+	}
+
+	private async Task DeleteGroup(long id, string name)
+	{
+		bool confirmed = await JS.InvokeAsync<bool>("confirm", $"'{name}' adlı Alt Grubu silmek istediğinize emin misiniz?");
+		if (confirmed)
+		{
+			try
+			{
+				var response = await Http.DeleteAsync($"api/ImportGroup/{id}");
+				if (response.IsSuccessStatusCode)
+				{
+					message = "Seçilen alt grup başarıyla sistemden kaldırıldı.";
+					await LoadAllData();
+				}
+				else
+				{
+					var errorDetail = await response.Content.ReadAsStringAsync();
+					message = $"İşlem Reddedildi! Detay: {errorDetail}";
+					StateHasChanged();
+				}
+			}
+			catch (Exception ex)
+			{
+				message = $"Hata oluştu: {ex.Message}";
+				StateHasChanged();
+			}
+		}
+	}
+
+}
