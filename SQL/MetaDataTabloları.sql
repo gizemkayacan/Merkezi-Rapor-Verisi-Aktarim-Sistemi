@@ -1,7 +1,6 @@
 USE RaporSistemi;
 GO
 
--- Ýliþkisel (Foreign Key) baðlantýlarý yüzünden silme iþlemi alt tablolardan ana tablolara doðru yapýlmalýdýr.
 DROP TABLE IF EXISTS dbo.ImportBatchError;
 DROP TABLE IF EXISTS dbo.ImportBatch;
 DROP TABLE IF EXISTS dbo.ImportReportField;
@@ -9,7 +8,7 @@ DROP TABLE IF EXISTS dbo.ImportReport;
 DROP TABLE IF EXISTS dbo.ImportGroup;
 DROP TABLE IF EXISTS dbo.ImportUpperGroup;
 
--- 1. ÜST GRUP TABLOSU
+-- ÜST GRUP TABLOSU
 CREATE TABLE dbo.ImportUpperGroup
 (
     Id BIGINT IDENTITY(1,1) PRIMARY KEY NOT NULL,
@@ -20,7 +19,7 @@ CREATE TABLE dbo.ImportUpperGroup
     UpdatedAt DATETIME2(0) NULL
 );
 
--- 2. GRUP TABLOSU
+-- GRUP TABLOSU
 CREATE TABLE dbo.ImportGroup
 (
     Id BIGINT IDENTITY(1,1) PRIMARY KEY NOT NULL,
@@ -32,7 +31,7 @@ CREATE TABLE dbo.ImportGroup
     UpdatedAt DATETIME2(0) NULL
 );
 
--- 3. RAPOR TABLOSU
+-- RAPOR TABLOSU
 CREATE TABLE dbo.ImportReport
 (
     Id BIGINT IDENTITY(1,1) PRIMARY KEY NOT NULL,
@@ -46,7 +45,7 @@ CREATE TABLE dbo.ImportReport
     UpdatedAt DATETIME2(0) NULL
 );
 
--- 4. RAPOR ALANLARI TABLOSU
+-- RAPOR ALANLARI TABLOSU
 CREATE TABLE dbo.ImportReportField
 (
     Id BIGINT IDENTITY(1,1) PRIMARY KEY NOT NULL,
@@ -65,7 +64,7 @@ CREATE TABLE dbo.ImportReportField
     UpdatedAt DATETIME2(0) NULL
 );
 
--- 5. IMPORT ÝÞLEMÝ (BATCH) ÖZET TABLOSU
+-- IMPORT ÝÞLEMÝ (BATCH) ÖZET TABLOSU
 CREATE TABLE dbo.ImportBatch
 (
     Id BIGINT IDENTITY(1,1) PRIMARY KEY NOT NULL,
@@ -80,7 +79,7 @@ CREATE TABLE dbo.ImportBatch
     FinishedAt DATETIME2(0) NULL
 );
 
--- 6. IMPORT ÝÞLEMÝ (BATCH) HATA DETAY TABLOSU
+-- IMPORT ÝÞLEMÝ (BATCH) HATA DETAY TABLOSU
 CREATE TABLE dbo.ImportBatchError
 (
     Id BIGINT IDENTITY(1,1) PRIMARY KEY NOT NULL,

@@ -1,3 +1,5 @@
+-- Bu dosya sistemi test etmek amacýyla tamamen sentetik (mock) verilerle oluþturulmuþtur, gerçek kurum verisi içermez.
+
 CREATE TABLE dbo.rpt_finans_bilanco_musteri_akis
 (
     Id BIGINT IDENTITY(1,1) NOT NULL PRIMARY KEY,

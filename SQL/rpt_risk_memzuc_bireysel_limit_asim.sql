@@ -1,3 +1,5 @@
+--Bu dosya sistemi test etmek amacýyla tamamen sentetik (mock) verilerle oluþturulmuþtur, gerçek kurum verisi içermez.
+
 CREATE TABLE dbo.rpt_risk_memzuc_bireysel_limit_asim
 (
     Id BIGINT IDENTITY(1,1) NOT NULL PRIMARY KEY,
@@ -13,7 +15,7 @@ CREATE TABLE dbo.rpt_risk_memzuc_bireysel_limit_asim
     CreatedAt DATETIME2(0) NOT NULL DEFAULT SYSUTCDATETIME()
 );
 
--- 2. ADIM: API'nin Excel'i okuyabilmesi için Metadata (Alan Listesi) kayýtlarý
+-- API'nin Excel'i okuyabilmesi için Metadata (Alan Listesi) kayýtlarý
 DECLARE @ReportId BIGINT = 14;
 
 INSERT INTO dbo.ImportReportField 
